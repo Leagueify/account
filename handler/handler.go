@@ -21,6 +21,7 @@ func AccountRouter() *http.ServeMux {
 		log.Fatalf("failed to create sub filesystem: %v", err)
 	}
 	fileServer := http.FileServer(http.FS(docsSubFS))
+	router.Handle("/docs", http.StripPrefix("/docs", fileServer))
 	router.Handle("/docs/", http.StripPrefix("/docs", fileServer))
 
 	return router
