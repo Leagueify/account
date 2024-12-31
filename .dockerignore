@@ -1,0 +1,12 @@
+# non-required directories
+**/.git
+**/.github
+**/tmp
+
+# non-required files
+**/.air.toml
+**/.gitignore
+**/Makefile
+**/dockerfile
+**/docker-compose.yml
+
