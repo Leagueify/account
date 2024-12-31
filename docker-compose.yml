@@ -1,0 +1,12 @@
+services:
+  leagueify-account:
+    image: leagueify-account-dev
+    build:
+      context: .
+      target: dev
+    command: air
+    ports:
+      - 6501:6501
+    volumes:
+      - ./:/app
+    restart: always
