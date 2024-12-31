@@ -1,0 +1,46 @@
+openapi: 3.1.0
+info:
+  version: 0.0.1
+  title: Leagueify Account API
+  summary: Open Source Sporting League Platform.
+  description: '
+    The Leagueify account service is responsible for managing user
+    authentication, authorization, and profiles.
+    '
+  license:
+    name: MIT
+    url: https://raw.githubusercontent.com/Leagueify/account/main/LICENSE
+  contact:
+    name: Leagueify Support
+    url: https://github.com/Leagueify/account/issues
+
+servers:
+  - url: http://localhost:6501/account
+    description: Local Docker Development
+
+paths:
+  /healthz:
+    get:
+      tags:
+      - Health Check
+      summary: Account Service Health Check
+      description: '
+        Check the health status of the Leagueify Account service. This endpoint
+        should return the service name and a status of ok.
+        '
+      responses:
+        200:
+          description: Health Check Response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  service:
+                    description: Service Name
+                    type: string
+                    example: account
+                  status:
+                    description: Server HTTP Status
+                    type: string
+                    example: ok
