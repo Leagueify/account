@@ -16,7 +16,11 @@ info:
 
 servers:
   - url: http://localhost:6501/account
-    description: Local Docker Development
+    description: DIRECT -- Local Docker Development
+  - url: http://localhost/account
+    description: PROXY -- Local Docker Development
+  - url: http://localhost/api/account
+    description: PREFIX PROXY -- Local Docker Development
 
 paths:
   /healthz:
