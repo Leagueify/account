@@ -4,34 +4,6 @@ on:
   release:
     types: [published]
 
-env:
-  REGISTRY: ghcr.io
-  IMAGE_NAME: ${{ github.repository }}
-
 jobs:
   build-and-push-image:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v4
-      - name: Login to GitHub Container Registry
-        uses: docker/login-action@9780b0c442fbb1117ed29e0efdff1e18412f7567
-        with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Extract Metadata
-        id: metadata
-        uses: docker/metadata-action@369eb591f429131d6889c46b94e711f089e6ca96
-        with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
-          tags: type=semver,pattern={{version}}
-      - name: Build Leagueify Account Docker Image and Push
-        uses: docker/build-push-action@48aba3b46d1b1fec4febb7c5d0c644b249a11355
-        with:
-          context: .
-          push: true
-          tags: ${{ steps.metadata.outputs.tags }}
+    uses: Leagueify/workflows/.github/workflows/release.yml@main
