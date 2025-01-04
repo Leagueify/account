@@ -2,9 +2,9 @@ package handler
 
 import (
 	"embed"
-	"github.com/labstack/echo/v4"
-	"github.com/leagueify/account/internal/config"
 	"net/http"
+
+	"github.com/labstack/echo/v4"
 )
 
 var (
@@ -15,7 +15,6 @@ var (
 
 type httpHandler struct {
 	app *echo.Echo
-	cfg *config.Config
 }
 
 func (h *httpHandler) Initialize() {
@@ -23,10 +22,9 @@ func (h *httpHandler) Initialize() {
 	group.StaticFS("/docs", docFS)
 	group.GET("/healthz", healthz)
 }
-func HTTP(app *echo.Echo, cfg *config.Config) Handler {
+func HTTP(app *echo.Echo) Handler {
 	return &httpHandler{
 		app: app,
-		cfg: cfg,
 	}
 }
 func healthz(ctx echo.Context) error {
