@@ -8,5 +8,5 @@ import (
 func main() {
 	cfg := config.GetConfig()
 
-	server.NewServer(cfg).Start()
+	server.NewEchoServer(cfg).Start()
 }
