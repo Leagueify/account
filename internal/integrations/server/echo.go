@@ -47,7 +47,7 @@ func (s *echoServer) Start() {
 	))
 	s.app.Use(middleware.Recover())
 	// register http handler
-	handler.HTTP(s.app, s.cfg).Initialize()
+	handler.HTTP(s.app).Initialize()
 	showStartBanner()
 	// start server
 	s.app.Logger.Fatal(s.app.Start(fmt.Sprintf(":%d", s.cfg.Server.Port)))
